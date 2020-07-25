@@ -8,8 +8,8 @@
 
 from flask import Flask
 
-from app.models.user import db
-
+# from app.models.user import db
+from app.models.bases import db
 
 def create_app():
     app = Flask(__name__)

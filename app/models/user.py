@@ -9,10 +9,12 @@ from sqlalchemy import Column, String, Integer
 from werkzeug.security import generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+from app.models.bases import Base
+
+# db = SQLAlchemy()
 
 
-class User(db.Model):
+class User(Base):
     id = Column(Integer, primary_key=True)
     nickname = Column(String(32), unique=True, nullable=False)
     _password = Column("password", String(128), nullable=False)

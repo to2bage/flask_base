@@ -9,7 +9,8 @@
 from flask import Blueprint, request
 from app.utils.redprint import RedPrint
 
-from app.models.user import db
+# from app.models.user import db
+from app.models.bases import db
 from app.models.user import User
 from app.forms.user import UserForm
 
@@ -41,6 +42,8 @@ def create_user():
 
         db.session.add(user)
         db.session.commit()
+
+
 
         return f"success user {form.nickname.data} and {form.password.data}"
     else:
