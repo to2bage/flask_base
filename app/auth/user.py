@@ -36,14 +36,19 @@ def index():
 def create_user():
     form = UserForm(request.form)
     if form.validate():
-        user = User()
-        user.nickname = form.nickname.data
-        user.password = form.password.data
+        # user = User()
+        # user.nickname = form.nickname.data
+        # user.password = form.password.data
+        #
+        # db.session.add(user)
+        # db.session.commit()
 
-        db.session.add(user)
-        db.session.commit()
+        with db.auto_commit():
+            user = User()
+            user.nickname = form.nickname.data
+            user.password = form.password.data
 
-
+            db.session.add(user)
 
         return f"success user {form.nickname.data} and {form.password.data}"
     else:
