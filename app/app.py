@@ -12,7 +12,8 @@ from flask import Flask
 from app.models.bases import db
 
 def create_app():
-    app = Flask(__name__)
+    # app = Flask(__name__)
+    app = Flask("app", static_folder="static", static_url_path="/image")    # http://127.0.0.1:5000/image/one.jpeg
 
     # app.config.from_object("app.config.secret")
     # app.config.from_object("app.config.setting")

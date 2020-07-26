@@ -6,7 +6,7 @@
   *@Version 1.0
  """
 
-from flask import Blueprint, request
+from flask import Blueprint, request, render_template
 from app.utils.redprint import RedPrint
 
 # from app.models.user import db
@@ -15,6 +15,9 @@ from app.models.user import User
 from app.forms.user import UserForm
 
 api = RedPrint("api")
+
+print("name ", __name__)        #  app.auth.user
+print("packag", __package__)    #  app.auth
 
 
 @api.route("/index", methods=["POST"])
@@ -53,3 +56,8 @@ def create_user():
         return f"success user {form.nickname.data} and {form.password.data}"
     else:
         return f"Failed {form.errors}"
+
+
+@api.route("/h")
+def halo():
+    return render_template("index.html")

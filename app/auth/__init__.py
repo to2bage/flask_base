@@ -9,5 +9,8 @@ from flask import Blueprint
 
 from app.auth.user import api
 
-auth = Blueprint("auth", __name__)
+print("__name__ ", __name__)    #  app.auth
+print("__package__", __package__)   # app.auth
+
+auth = Blueprint("auth", __package__, template_folder="templates")      #  __package__ == "app.auth"
 api.register_to(auth)
